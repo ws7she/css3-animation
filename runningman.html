@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>running man</title>
+</head>
+<style type="text/css">
+	.person{position:relative;margin:100px 100px;display:inline-block;animation: run 10s infinite alternate;z-index:3;}
+	.head{width:30px;height:30px;border: 2px solid #000;border-radius:50%;position:relative;animation:one 2s infinite;background-color:#F9E491;}
+	.head:before{width:20px;height:10px;content:"";position:absolute;background-color:#000;top:-6px;transform:rotate(-30deg);left:-7px;background-color:#06A7E2;}
+	.head:after{width:30px;height:3px;content:"";position:absolute;background-color:#000;top:2px;left:-9px;transform:rotate(-30deg);background-color:#06A7E2;}
+	.head i{height:3px;width:3px;background-color:#000;display:block;position:absolute;top:5px;right:5px;}
+	.body{height:60px;width:3px;background-color:#000;position:relative;left:18px;}
+	.left-arm{width:30px;height:30px;border-top:3px solid #000;border-left:3px solid #000;position:relative;left:-30px;-webkit-transform:rotate(-30deg);-webkit-transform-origin:right top;animation:two 2s infinite;}
+	.right-arm{width:30px;height:30px;border-top:3px solid #000;border-left:3px solid #000;position:relative;left:-30px;-webkit-transform:rotate(-100deg);-webkit-transform-origin:right top;top:-34px;animation:three 2s infinite;}
+	.leg{position:relative;left:18px;}
+	.left-leg{width:30px;height:30px;border-top:3px solid #000;border-right:3px solid #000;position:relative;top:0;-webkit-transform:rotate(130deg);-webkit-transform-origin:left top;left:2px;animation:four 2s infinite;}
+	.right-leg{width:30px;height:30px;border-top:3px solid #000;border-right:3px solid #000;position:relative;top:-33px;animation:five 2s infinite;-webkit-transform-origin:left top;left:2px;}
+	@keyframes run{
+		0%{margin-left:100px;margin-top:100px;transform: rotate(0deg);}
+		24%{transform: rotate(0deg);}
+		25%{margin-top:100px;transform: rotate(30deg);}
+		30%{margin-top:-150px;transform: rotate(180deg);}
+		35%{margin-top:0;margin-top:100px;transform: rotate(360deg);}
+		100%{margin-left:1000px;margin-top:100px;transform: rotate(360deg);}
+	}
+	@keyframes one{
+		0%{-webkit-transform:rotate(0);}
+		50%{-webkit-transform: rotate(30deg);}
+		100%{-webkit-transform: rotate(0deg);}
+	}
+	@keyframes two{
+		0%{-webkit-transform:rotate(-10deg);}
+		50%{-webkit-transform:rotate(-130deg);}
+		100%{-webkit-transform:rotate(-10deg);}
+	}
+	@keyframes three{
+		0%{-webkit-transform:rotate(-130deg);}
+		50%{-webkit-transform:rotate(-10deg);}
+		100%{-webkit-transform:rotate(-130deg);}
+	}
+	@keyframes four{
+		0%{-webkit-transform:rotate(130deg);}
+		50%{-webkit-transform:rotate(0deg);}
+		100%{-webkit-transform:rotate(130deg);}
+	}
+	@keyframes five{
+		0%{-webkit-transform:rotate(0deg);}
+		50%{-webkit-transform:rotate(130deg);}
+		100%{-webkit-transform:rotate(0deg);}
+	}
+	.end{
+		width:510px;
+		height:5px;
+		position:absolute;
+		left:400px;
+		top:170px;
+		transform: rotate(30deg);
+		z-index:2;
+	}
+	.end:before{
+		content:"";
+		width:300px;
+		height:5px;
+		background-color:red;
+		display:inline-block;
+		-webkit-transform-origin:left;
+	}
+	.end:after{
+		content:"";
+		width:200px;
+		height:5px;
+		background-color:red;
+		display:inline-block;
+		-webkit-transform-origin:right;
+	}
+	.road{
+		background-color:#699f00;
+		height:277px;
+		width:1000px;
+		transform:skew(50deg, 0);
+		position: absolute;
+		top: 135px;
+		left: 141px;
+		z-index:1;
+	}
+	.i{
+		background-color:black;
+		height:97px;
+		width:3px;
+		position: absolute;
+		left: 860px;
+		z-index: 2;
+		top: 303px;
+	}
+	.a{
+		background-color:black;
+		height:97px;
+		width:3px;
+		position: absolute;
+		left: 430px;
+		z-index: 2;
+		top: 55px;
+	}
+</style>
+<body>
+	<div class="person">
+		<div class="head"><i></i></div>
+		<div class="body">
+			<div class="left-arm"></div>
+			<div class="right-arm"></div>
+		</div>
+		<div class="leg">
+			<div class="left-leg"></div>
+			<div class="right-leg"></div>
+		</div>
+	</div>
+	<div class="end"></div>
+	<div class="road"></div>
+	<div class="i"></div>
+	<div class="a"></div>
+</body>
+</html>

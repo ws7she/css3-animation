@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>open</title>
+</head>
+<style type="text/css">
+	body{font-family: Tahoma,Helvetica,Arial,"FAEF6FC5ED1",sans-serif;}
+	.door{width:100%;height:100%;position:relative;background: -webkit-linear-gradient(top,#5EB3DE,#1B518A 65%,#000);overflow:hidden;}
+	.left,.right{background-color:#441E1E;border: 2px solid #000;width:50%;height:596px;position:relative;transition: transform 5s;z-index:5;transition-delay: 3s;box-sizing: border-box;}
+	.left{float:left;transform-origin: left top;}
+	.right{float:right;transform-origin:right top;}
+	.left:before,.right:before{
+		content:'';
+		display:block;
+		position: absolute;
+		top:45%;
+		width:30px;
+		height:30px;
+		background-color:#000;
+		border-radius: 50%;
+		z-index:1;
+	}
+	.left:before{right:3%;}
+	.right:before{left:3%;}
+	.door:hover .left{-webkit-transform:rotateY(90deg);}
+	.door:hover .right{-webkit-transform:rotateY(-90deg);}
+	.left:after,.right:after{
+		content:"";
+		width:30px;
+		height:30px;
+		border-radius:50%;
+		border:3px solid yellow;
+		position:absolute;
+		top:48%;
+	}
+	.door:hover .left:after,.door:hover .right:after{
+		animation: lock 1s 3;
+		-webkit-transform-origin: top center;
+	}
+	@keyframes lock{
+		0%{-webkit-transform:rotateX(0deg);}
+		50%{-webkit-transform:rotateX(-50deg);}
+		100%{-webkit-transform:rotateX(0deg);}
+	}
+	.left:after{right:2.5%;}
+	.right:after{left:2.5%;}
+	.left span,.right span{
+		background-color:red;
+		width:90px;
+		height:90px;
+		display:inline-block;
+		text-align:center;
+		line-height:90px;
+		transform:rotate(45deg);
+		position:absolute;
+		top:25%;
+	}
+	.left span{left:40%;}
+	.right span{right:40%;}
+	.left span:before,.right span:before{
+		content:'福';
+		font-size:60px;
+		color:yellow;
+		transform:rotate(135deg);
+		display:inline-block;
+	}
+	.moon{position:absolute;top:10%;left:10%;width:130px;height:130px;border-radius:50%;background: #fff;box-shadow:0 0 30px #fff;}
+	.star:nth-child(1),.star:nth-child(2){
+		width:3px;
+		height:3px;
+		background-color:#fff;
+		border-radius:50%;
+		position:absolute;
+		-webkit-animation: shine 1s infinite;
+	}
+	.star:nth-child(3n){
+		width:10px;
+		height:10px;
+		background-color:#fff;
+		border-radius:50%;
+		position:absolute;
+		-webkit-animation: shine 4s infinite;
+	}
+	.star:nth-child(3n+1){
+		width:8px;
+		height:8px;
+		background-color:#fff;
+		border-radius:50%;
+		position:absolute;
+		-webkit-animation: shine 3s infinite;
+	}
+	.star:nth-child(3n+2){
+		width:5px;
+		height:5px;
+		background-color:#fff;
+		border-radius:50%;
+		position:absolute;
+		-webkit-animation: shine 2s infinite;
+	}
+	.star-all{width:100%;height:596px;position:relative;}
+	.star:nth-child(1){
+		left:45%;
+		top:10%;
+	}
+	.star:nth-child(2){
+		left:3%;
+		top:3%;
+	}
+	.star:nth-child(3){
+		left:80%;
+		top:12%;
+	}
+	.star:nth-child(4){
+		left:5%;
+		top:30%;
+	}
+	.star:nth-child(5){
+		left:22%;
+		top:47%;
+	}
+	.star:nth-child(6){
+		left:37%;
+		top:9%;
+	}
+	.star:nth-child(7){
+		left:43%;
+		top:56%;
+	}
+	.star:nth-child(8){
+		left:41%;
+		top:19%;
+	}
+	.star:nth-child(9){
+		left:86%;
+		top:23%;
+	}
+	.star:nth-child(10){
+		left:71%;
+		top:69%;
+	}
+	.star:nth-child(11){
+		left:25%;
+		top:64%;
+	}
+	.star:nth-child(12){
+		left:11%;
+		top:58%;
+	}
+	.star:nth-child(13){
+		left:31%;
+		top:53%;
+	}
+	.star:nth-child(14){
+		left:46%;
+		top:13%;
+	}
+	.star:nth-child(15){
+		left:97%;
+		top:85%;
+	}
+	.star:nth-child(16){
+		left:66%;
+		top:32%;
+	}
+	.star:nth-child(17){
+		left:15%;
+		top:32%;
+	}
+	.star:nth-child(18){
+		left:68%;
+		top:68%;
+	}
+	.star:nth-child(19){
+		left:77%;
+		top:19%;
+	}
+	.star:nth-child(20){
+		left:48%;
+		top:76%;
+	}.star:nth-child(21){
+		left:29%;
+		top:10%;
+	}
+	@keyframes shine{
+		0%{opacity:1;}
+		50%{opacity:.3;}
+		100%{opacity:1;}
+	}
+	.room{background-color:#000;position:absolute;bottom:0;left:75%;width:100px;height:100px;}
+	.room:before{
+		content:'';
+		border: 80px dashed transparent;
+    	border-bottom: 80px solid #000;
+    	position:absolute;
+    	top:-160px;
+    	left:-30px;
+	}
+	.room:after{
+		content:'';
+		height:30px;
+		width:30px;
+		background-color:yellow;
+		position:absolute;
+		left:20px;
+		top:15px;
+	}
+	.meteor_one{
+		width:5px;
+		height:5px;
+		border-radius:50%;
+		position:absolute;
+		left:96%;
+		top:4%;
+		background-color:#E6DB74;
+		animation:shua 1.5s infinite linear;
+	}
+	.meteor_one:after{
+		width:2px;
+		height:200px;
+		content:'';
+		background-color:#E6DB74;
+		display:block;
+		transform: rotate(45deg);
+		position:absolute;
+		top:-170px;
+		left:75px;
+	}
+	.meteor_two{
+		width:4px;
+		height:4px;
+		border-radius:50%;
+		position:absolute;
+		left:49%;
+		top:16%;
+		background-color:#E6DB74;
+		animation:shua 1.5s infinite linear;
+		animation-delay: 1s;opacity:0;
+	}
+	.meteor_two:after{
+		width:1px;
+		height:200px;
+		content:'';
+		background-color:#E6DB74;
+		display:block;
+		transform: rotate(45deg);
+		position:absolute;
+		top:-169px;
+		left:72px;
+	}
+	@keyframes shua {
+		0%{opacity: 0;transform:scale(0) translate(0,0);}
+		50%{opacity:1;transform:scale(1)  translate(-300px,300px);}
+		100%{opacity:0;transform:scale(1) translate(-600px,600px);}
+	}
+</style>
+<body>
+	<div class="door">
+		<div class="left"><span></span></div>
+		<div class="right"><span></span></div>
+		<div class="moon"></div>
+		<div class="star-all">
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+			<i class="star"></i>
+		</div>
+		<div class="room"></div>
+		<div class="meteor_one"></div>
+		<div class="meteor_two"></div>
+	</div>
+</body>
+</html>
